@@ -1,3 +1,10 @@
+//*****************************************************************************
+// COMSC-210 | Lab 25 | Gabriel Marquez
+// Description: this program times, records, and reports how long it takes each
+// data structure (vector, list, & set) to run reading, sorting, insertion, and
+// deletion operations.
+//*****************************************************************************
+
 #include <iostream>
 #include <chrono>
 using namespace std;
