@@ -15,6 +15,8 @@
 using namespace std;
 using namespace std::chrono;
 
+string FILE_NAME = "codes.txt";
+
 int main() {
     //create empty containers
     vector<string> vector;
@@ -22,7 +24,7 @@ int main() {
     set<string> set;
 
     auto start = high_resolution_clock::now();
-    ifstream fin("codes.txt");
+    ifstream fin(FILE_NAME);
     if (fin.good( )) {
         string input;
         while (fin >> input)
@@ -34,7 +36,7 @@ int main() {
         return 1;
     }
     auto end = high_resolution_clock::now();
-    auto duration = duration_cast<milliseconds>(end - start);
+    auto duration = duration_cast<nanoseconds>(end - start);
     cout << "Time taken: " << duration.count() << " nanoseconds\n";
 
     return 0;
@@ -43,6 +45,6 @@ int main() {
 /* syntax examples:
 auto start = high_resolution_clock::now()
 auto end = high_resolution_clock::now()
-auto duration = duration_cast<milliseconds>(end - start)
+auto duration = duration_cast<nanoseconds>(end - start)
 duration.count() references elapsed milliseconds
 */
