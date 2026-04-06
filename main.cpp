@@ -18,13 +18,13 @@ using namespace std::chrono;
 string FILE_NAME = "codes.txt";
 
 void read_race (vector<string> &, list<string> &, set<string> &,
-                auto, auto, auto)
+                auto &, auto &, auto &)
 void sort_race (vector<string> &, list<string> &, //set not needed
-                auto, auto, auto)
+                auto &, auto &)
 void insert_race (vector<string> &, list<string> &, set<string> &,
-                auto, auto, auto)
+                auto &, auto &, auto &)
 void delete_race (vector<string> &, list<string> &, set<string> &,
-                auto, auto, auto)
+                auto &, auto &, auto &)
 
 int main() {
     //create empty containers
@@ -57,14 +57,43 @@ auto end = high_resolution_clock::now()
 auto duration = duration_cast<nanoseconds>(end - start)
 duration.count() references elapsed milliseconds
 */
-//description: read_race() determines
-//arguments: 
+
+//description: read_race() determines which of the passed containers performs
+// a read opeation the fastest
+//arguments: vector, list, & set structures, and auto variables to store their
+// respective operation times in nanoseconds (all passed by reference)
 //returns: void
-void read_race (vector<string> &, list<string> &, set<string> &,
-                auto, auto, auto)
-void sort_race (vector<string> &, list<string> &, //set not needed
-                auto, auto, auto)
+void read_race (vector<string> &v, list<string> &l, set<string> &s,
+                auto &v_time, auto &l_time, auto &s_time) {
+    
+    }
+
+//description: sort_race() determines which of the passed containers performs
+// a sort opeation the fastest
+//arguments: vector & list structures (set not needed), and auto variables
+// to store their respective operation times in nanoseconds (all passed by reference)
+//returns: void
+void sort_race (vector<string> &v, list<string> &l,
+                auto &v_time, auto &l_time) {
+    
+    }
+
+//description: insert_race() determines which of the passed containers performs
+// an insertion opeation the fastest
+//arguments: vector, list, & set structures, and auto variables to store their
+// respective operation times in nanoseconds (all passed by reference)
+//returns: void
 void insert_race (vector<string> &, list<string> &, set<string> &,
-                auto, auto, auto)
+                auto &v_time, auto &l_time, auto &s_time) {
+    
+    }
+
+//description: delete_race() determines which of the passed containers performs
+// an deletion opeation the fastest
+//arguments: vector, list, & set structures, and auto variables to store their
+// respective operation times in nanoseconds (all passed by reference)
+//returns: void
 void delete_race (vector<string> &, list<string> &, set<string> &,
-                auto, auto, auto)
+                auto &v_time, auto &l_time, auto &s_time) {
+    
+    }
