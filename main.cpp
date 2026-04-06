@@ -17,9 +17,9 @@ using namespace std::chrono;
 
 string FILE_NAME = "codes.txt";
 
-void read_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time,
-                set<string> &s, auto &s_time)
-void sort_race (vector<string> &, auto &, list<string> &, auto &)
+void read_race (vector<string> &, auto &, list<string> &, auto &,
+                set<string> &, auto &)
+void sort_race (vector<string> &, auto &, list<string> &, auto &) //set not needed
 void insert_race (vector<string> &, auto &, list<string> &, auto &,
                   set<string> &, auto &)
 void delete_race (vector<string> &, auto &, list<string> &, auto &,
@@ -70,6 +70,36 @@ void read_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time,
     v_time = duration.count();
 
     //reading to list
+    auto start = high_resolution_clock::now();
+    ifstream fin(FILE_NAME);
+    if (fin.good( )) {
+        while (fin >> input)
+            l.push_back(input);
+        fin.close( );
+    }
+    else {
+        cout << "ERROR! Please verify file name/directory and restart program.";
+        return 1;
+    }
+    auto end = high_resolution_clock::now();
+    auto duration = duration_cast<nanoseconds>(end - start);
+    l_time = duration.count();
+
+    //reading to set
+    auto start = high_resolution_clock::now();
+    ifstream fin(FILE_NAME);
+    if (fin.good( )) {
+        while (fin >> input)
+            s.insert(input);
+        fin.close( );
+    }
+    else {
+        cout << "ERROR! Please verify file name/directory and restart program.";
+        return 1;
+    }
+    auto end = high_resolution_clock::now();
+    auto duration = duration_cast<nanoseconds>(end - start);
+    s_time = duration.count();
     }
 
 //description: sort_race() determines which of the passed containers performs
