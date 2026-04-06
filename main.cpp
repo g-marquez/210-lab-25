@@ -45,12 +45,14 @@ int main() {
     insert_race (vector, v_insert, list, l_insert, set, s_insert);
     delete_race (vector, v_delete, list, l_delete, set, s_delete);
     
-    cout << right << setw(SET_WIDTH) << "Operation" 
-         << setw(SET_WIDTH) << "Vector" 
-         << setw(SET_WIDTH) << "List" 
-         << setw(SET_WIDTH) << "Set" << endl;
+    cout << right << setw(SET_WIDTH) << "Operation" << setw(SET_WIDTH) << "Vector" 
+         << setw(SET_WIDTH) << "List" << setw(SET_WIDTH) << "Set" << endl;
     cout << setw(SET_WIDTH) << "Read" << setw(SET_WIDTH) << v_read << setw(SET_WIDTH) 
          << l_read << setw(SET_WIDTH) << s_read << endl;
+    cout << setw(SET_WIDTH) << "Sort" << setw(SET_WIDTH) << v_sort << setw(SET_WIDTH)
+         << l_sort << setw(SET_WIDTH) << s_sort << endl;
+    cout << setw(SET_WIDTH) << "Insert" << setw(SET_WIDTH) << v_insert
+         << setw(SET_WIDTH) << l_insert << setw(SET_WIDTH) << s_insert << endl;
 
     return 0;
 }
