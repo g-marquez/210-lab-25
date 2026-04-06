@@ -31,7 +31,19 @@ int main() {
     list<string> list;
     set<string> set;
 
+    //declare variable for recorded times
+    int v_read, l_read, s_read;
+    int v_sort, l_sort;
+    int s_sort = -1; //set is already sorted
+    int v_insert, l_insert, s_insert;
+    int v_delete, l_delete, s_delete;
+
+    read_race (vector, v_read, list, l_read, set, s_read);
+    sort_race (vector, v_sort, list, l_sort);
+    insert_race (vector, v_insert, list, l_insert, set, s_insert);
+    delete_race (vector, v_delete, list, l_delete, set, s_delete);
     
+    cout << s_delete; //testing to see if functions work
 
     return 0;
 }
@@ -156,7 +168,11 @@ void insert_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time
 void delete_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time,
                   set<string> &s, auto &s_time) {
     //delete from vector
-    
+    auto start = high_resolution_clock::now();
+    v.erase(v.begin() + v.size() / 2);
+    auto end = high_resolution_clock::now();
+    auto duration = duration_cast<nanoseconds>(end - start);
+    v_time = duration.count();
     
     //delete from list
     auto start = high_resolution_clock::now();
