@@ -17,6 +17,7 @@ using namespace std;
 using namespace std::chrono;
 
 string FILE_NAME = "codes.txt";
+int SET_WIDTH = 15;
 
 void read_race (vector<string> &, long &, list<string> &, long &,
                 set<string> &, long &);
@@ -28,7 +29,7 @@ void delete_race (vector<string> &, long &, list<string> &, long &,
 
 int main() {
     //create empty containers
-    vector<string> vector;
+    /*vector<string> vector;
     list<string> list;
     set<string> set;
 
@@ -42,9 +43,10 @@ int main() {
     read_race (vector, v_read, list, l_read, set, s_read);
     sort_race (vector, v_sort, list, l_sort);
     insert_race (vector, v_insert, list, l_insert, set, s_insert);
-    delete_race (vector, v_delete, list, l_delete, set, s_delete);
+    delete_race (vector, v_delete, list, l_delete, set, s_delete);*/
     
-    cout << ""
+    cout << setw(SET_WIDTH) << "Operation" << setw(SET_WIDTH) << "Vector" << setw(SET_WIDTH)
+         << "List" << setw(SET_WIDTH) << "Set" << endl;
 
     return 0;
 }
