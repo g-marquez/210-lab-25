@@ -99,8 +99,13 @@ void read_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time,
 // to store their respective operation times in nanoseconds (all passed by reference)
 //returns: void
 void sort_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time) {
+    //sort vector
+    auto start = high_resolution_clock::now();
     
-    }
+    auto end = high_resolution_clock::now();
+    auto duration = duration_cast<nanoseconds>(end - start);
+    v_time = duration.count();
+}
 
 //description: insert_race() determines which of the passed containers performs
 // an insertion opeation the fastest
@@ -110,7 +115,7 @@ void sort_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time) 
 void insert_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time,
                   set<string> &s, auto &s_time) {
     
-    }
+}
 
 //description: delete_race() determines which of the passed containers performs
 // an deletion opeation the fastest
@@ -120,4 +125,4 @@ void insert_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time
 void delete_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time,
                   set<string> &s, auto &s_time) {
     
-    }
+}
