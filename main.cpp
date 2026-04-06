@@ -101,10 +101,17 @@ void read_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time,
 void sort_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time) {
     //sort vector
     auto start = high_resolution_clock::now();
-    
+    sort(v.begin(), v.end());
     auto end = high_resolution_clock::now();
     auto duration = duration_cast<nanoseconds>(end - start);
     v_time = duration.count();
+
+    //sort list
+    auto start = high_resolution_clock::now();
+    l.sort();
+    auto end = high_resolution_clock::now();
+    auto duration = duration_cast<nanoseconds>(end - start);
+    l_time = duration.count();
 }
 
 //description: insert_race() determines which of the passed containers performs
@@ -114,7 +121,20 @@ void sort_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time) 
 //returns: void
 void insert_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time,
                   set<string> &s, auto &s_time) {
-    
+    string val = "TESTCODE";
+
+    //insert into vector
+    auto start = high_resolution_clock::now();
+    v.insert(v.begin() + v.size() / 2, val);
+    auto end = high_resolution_clock::now();
+    auto duration = duration_cast<nanoseconds>(end - start);
+    v_time = duration.count();
+
+    //insert into list
+
+
+    //insert into set
+
 }
 
 //description: delete_race() determines which of the passed containers performs
@@ -124,5 +144,11 @@ void insert_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time
 //returns: void
 void delete_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time,
                   set<string> &s, auto &s_time) {
+    //delete from vector
+
     
+    //delete from list
+
+
+    //delete from set
 }
