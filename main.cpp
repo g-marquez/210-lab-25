@@ -132,8 +132,10 @@ void insert_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time
 
     //insert into list
     auto start = high_resolution_clock::now();
-    auto it = 
-    l.insert();
+    auto it = l.begin();
+    for (int i = 0; i < l.size() / 2; ++i)
+        it++;
+    l.insert(it, val);
     auto end = high_resolution_clock::now();
     auto duration = duration_cast<nanoseconds>(end - start);
     l_time = duration.count();
@@ -154,10 +156,25 @@ void insert_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time
 void delete_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time,
                   set<string> &s, auto &s_time) {
     //delete from vector
-
+    
     
     //delete from list
-
+    auto start = high_resolution_clock::now();
+    auto it = l.begin();
+    for (int i = 0; i < l.size() / 2; ++i)
+        it++;
+    l.erase(it);
+    auto end = high_resolution_clock::now();
+    auto duration = duration_cast<nanoseconds>(end - start);
+    l_time = duration.count();
 
     //delete from set
+    auto start = high_resolution_clock::now();
+    auto it = s.begin();
+    for (int i = 0; i < s.size() / 2; ++i)
+        it++;
+    s.erase(it);
+    auto end = high_resolution_clock::now();
+    auto duration = duration_cast<nanoseconds>(end - start);
+    s_time = duration.count();
 }
