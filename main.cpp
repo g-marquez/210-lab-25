@@ -53,54 +53,45 @@ void read_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time,
     string file = FILE_NAME;
     string input;
 
-    //reading to vector
-    auto start = high_resolution_clock::now();
-    ifstream fin(FILE_NAME);
+    ifstream fin(file);
     if (fin.good( )) {
+        //reading to vector
+        auto start = high_resolution_clock::now();
         while (fin >> input)
-            v.push_back(input);   
-        fin.close( );
-    }
-    else {
-        cout << "ERROR! Please verify file name/directory and restart program.";
-        return 1;
-    }
-    auto end = high_resolution_clock::now();
-    auto duration = duration_cast<nanoseconds>(end - start);
-    v_time = duration.count();
+            v.push_back(input);
+        auto end = high_resolution_clock::now();
+        auto duration = duration_cast<nanoseconds>(end - start);
+        v_time = duration.count();
 
-    //reading to list
-    auto start = high_resolution_clock::now();
-    ifstream fin(FILE_NAME);
-    if (fin.good( )) {
+        fin.clear(); //clear flags
+        fin.seekg(0); //go back to beginning of file
+
+        //reading to list
+        auto start = high_resolution_clock::now();
         while (fin >> input)
             l.push_back(input);
-        fin.close( );
-    }
-    else {
-        cout << "ERROR! Please verify file name/directory and restart program.";
-        return 1;
-    }
-    auto end = high_resolution_clock::now();
-    auto duration = duration_cast<nanoseconds>(end - start);
-    l_time = duration.count();
+        auto end = high_resolution_clock::now();
+        auto duration = duration_cast<nanoseconds>(end - start);
+        l_time = duration.count();
 
-    //reading to set
-    auto start = high_resolution_clock::now();
-    ifstream fin(FILE_NAME);
-    if (fin.good( )) {
+        fin.clear(); //clear flags
+        fin.seekg(0); //go back to beginning of file
+
+        //reading to set
+        auto start = high_resolution_clock::now();
         while (fin >> input)
             s.insert(input);
+        auto end = high_resolution_clock::now();
+        auto duration = duration_cast<nanoseconds>(end - start);
+        s_time = duration.count();
+
         fin.close( );
     }
     else {
         cout << "ERROR! Please verify file name/directory and restart program.";
         return 1;
     }
-    auto end = high_resolution_clock::now();
-    auto duration = duration_cast<nanoseconds>(end - start);
-    s_time = duration.count();
-    }
+}
 
 //description: sort_race() determines which of the passed containers performs
 // a sort opeation the fastest
