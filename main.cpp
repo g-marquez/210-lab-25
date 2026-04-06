@@ -17,6 +17,15 @@ using namespace std::chrono;
 
 string FILE_NAME = "codes.txt";
 
+void read_race (vector<string> &, list<string> &, set<string> &,
+                auto, auto, auto)
+void sort_race (vector<string> &, list<string> &, //set not needed
+                auto, auto, auto)
+void insert_race (vector<string> &, list<string> &, set<string> &,
+                auto, auto, auto)
+void delete_race (vector<string> &, list<string> &, set<string> &,
+                auto, auto, auto)
+
 int main() {
     //create empty containers
     vector<string> vector;
@@ -48,3 +57,14 @@ auto end = high_resolution_clock::now()
 auto duration = duration_cast<nanoseconds>(end - start)
 duration.count() references elapsed milliseconds
 */
+//description: read_race() determines
+//arguments: 
+//returns: void
+void read_race (vector<string> &, list<string> &, set<string> &,
+                auto, auto, auto)
+void sort_race (vector<string> &, list<string> &, //set not needed
+                auto, auto, auto)
+void insert_race (vector<string> &, list<string> &, set<string> &,
+                auto, auto, auto)
+void delete_race (vector<string> &, list<string> &, set<string> &,
+                auto, auto, auto)
