@@ -12,6 +12,7 @@
 #include <set>
 #include <algorithm> //for sorting vector
 #include <fstream>
+#include <iomanip>
 using namespace std;
 using namespace std::chrono;
 
@@ -43,17 +44,10 @@ int main() {
     insert_race (vector, v_insert, list, l_insert, set, s_insert);
     delete_race (vector, v_delete, list, l_delete, set, s_delete);
     
-    cout << s_delete; //testing to see if functions work
+    cout << ""
 
     return 0;
 }
-
-/* syntax examples:
-auto start = high_resolution_clock::now()
-auto end = high_resolution_clock::now()
-auto duration = duration_cast<nanoseconds>(end - start)
-duration.count() references elapsed milliseconds
-*/
 
 //description: read_race() determines which of the passed containers performs
 // a read opeation the fastest
@@ -165,8 +159,8 @@ void insert_race (vector<string> &v, long &v_time, list<string> &l, long &l_time
 //arguments: vector, list, & set structures, and auto variables to store their
 // respective operation times in nanoseconds (all passed by reference)
 //returns: void
-void delete_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time,
-                  set<string> &s, auto &s_time) {
+void delete_race (vector<string> &v, long &v_time, list<string> &l, long &l_time,
+                  set<string> &s, long &s_time) {
     //delete from vector
     auto start = high_resolution_clock::now();
     v.erase(v.begin() + v.size() / 2);
