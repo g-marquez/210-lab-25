@@ -17,14 +17,13 @@ using namespace std::chrono;
 
 string FILE_NAME = "codes.txt";
 
-void read_race (vector<string> &, list<string> &, set<string> &,
-                auto &, auto &, auto &)
-void sort_race (vector<string> &, list<string> &, //set not needed
-                auto &, auto &)
-void insert_race (vector<string> &, list<string> &, set<string> &,
-                auto &, auto &, auto &)
-void delete_race (vector<string> &, list<string> &, set<string> &,
-                auto &, auto &, auto &)
+void read_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time,
+                set<string> &s, auto &s_time)
+void sort_race (vector<string> &, auto &, list<string> &, auto &)
+void insert_race (vector<string> &, auto &, list<string> &, auto &,
+                  set<string> &, auto &)
+void delete_race (vector<string> &, auto &, list<string> &, auto &,
+                  set<string> &, auto &)
 
 int main() {
     //create empty containers
@@ -32,21 +31,7 @@ int main() {
     list<string> list;
     set<string> set;
 
-    auto start = high_resolution_clock::now();
-    ifstream fin(FILE_NAME);
-    if (fin.good( )) {
-        string input;
-        while (fin >> input)
-            vector.push_back(input);       
-        fin.close( );
-    }
-    else {
-        cout << "ERROR! Please verify file name/directory and restart program.";
-        return 1;
-    }
-    auto end = high_resolution_clock::now();
-    auto duration = duration_cast<nanoseconds>(end - start);
-    cout << "Time taken: " << duration.count() << " nanoseconds\n";
+    
 
     return 0;
 }
@@ -63,9 +48,28 @@ duration.count() references elapsed milliseconds
 //arguments: vector, list, & set structures, and auto variables to store their
 // respective operation times in nanoseconds (all passed by reference)
 //returns: void
-void read_race (vector<string> &v, list<string> &l, set<string> &s,
-                auto &v_time, auto &l_time, auto &s_time) {
-    
+void read_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time,
+                set<string> &s, auto &s_time) {
+    string file = FILE_NAME;
+    string input;
+
+    //reading to vector
+    auto start = high_resolution_clock::now();
+    ifstream fin(FILE_NAME);
+    if (fin.good( )) {
+        while (fin >> input)
+            v.push_back(input);   
+        fin.close( );
+    }
+    else {
+        cout << "ERROR! Please verify file name/directory and restart program.";
+        return 1;
+    }
+    auto end = high_resolution_clock::now();
+    auto duration = duration_cast<nanoseconds>(end - start);
+    v_time = duration.count();
+
+    //reading to list
     }
 
 //description: sort_race() determines which of the passed containers performs
@@ -73,8 +77,7 @@ void read_race (vector<string> &v, list<string> &l, set<string> &s,
 //arguments: vector & list structures (set not needed), and auto variables
 // to store their respective operation times in nanoseconds (all passed by reference)
 //returns: void
-void sort_race (vector<string> &v, list<string> &l,
-                auto &v_time, auto &l_time) {
+void sort_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time) {
     
     }
 
@@ -83,8 +86,8 @@ void sort_race (vector<string> &v, list<string> &l,
 //arguments: vector, list, & set structures, and auto variables to store their
 // respective operation times in nanoseconds (all passed by reference)
 //returns: void
-void insert_race (vector<string> &, list<string> &, set<string> &,
-                auto &v_time, auto &l_time, auto &s_time) {
+void insert_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time,
+                  set<string> &s, auto &s_time) {
     
     }
 
@@ -93,7 +96,7 @@ void insert_race (vector<string> &, list<string> &, set<string> &,
 //arguments: vector, list, & set structures, and auto variables to store their
 // respective operation times in nanoseconds (all passed by reference)
 //returns: void
-void delete_race (vector<string> &, list<string> &, set<string> &,
-                auto &v_time, auto &l_time, auto &s_time) {
+void delete_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time,
+                  set<string> &s, auto &s_time) {
     
     }
