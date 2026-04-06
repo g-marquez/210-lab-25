@@ -17,13 +17,13 @@ using namespace std::chrono;
 
 string FILE_NAME = "codes.txt";
 
-void read_race (vector<string> &, auto &, list<string> &, auto &,
-                set<string> &, auto &)
-void sort_race (vector<string> &, auto &, list<string> &, auto &) //set not needed
-void insert_race (vector<string> &, auto &, list<string> &, auto &,
-                  set<string> &, auto &)
-void delete_race (vector<string> &, auto &, list<string> &, auto &,
-                  set<string> &, auto &)
+void read_race (vector<string> &, long &, list<string> &, long &,
+                set<string> &, long &);
+void sort_race (vector<string> &, long &, list<string> &, long &); //set not needed
+void insert_race (vector<string> &, long &, list<string> &, long &,
+                  set<string> &, long &);
+void delete_race (vector<string> &, long &, list<string> &, long &,
+                  set<string> &, long &);
 
 int main() {
     //create empty containers
@@ -32,11 +32,11 @@ int main() {
     set<string> set;
 
     //declare variable for recorded times
-    int v_read, l_read, s_read;
-    int v_sort, l_sort;
+    long v_read, l_read, s_read;
+    long v_sort, l_sort;
     int s_sort = -1; //set is already sorted
-    int v_insert, l_insert, s_insert;
-    int v_delete, l_delete, s_delete;
+    long v_insert, l_insert, s_insert;
+    long v_delete, l_delete, s_delete;
 
     read_race (vector, v_read, list, l_read, set, s_read);
     sort_race (vector, v_sort, list, l_sort);
@@ -60,8 +60,8 @@ duration.count() references elapsed milliseconds
 //arguments: vector, list, & set structures, and auto variables to store their
 // respective operation times in nanoseconds (all passed by reference)
 //returns: void
-void read_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time,
-                set<string> &s, auto &s_time) {
+void read_race (vector<string> &v, long &v_time, list<string> &l, long &l_time,
+                set<string> &s, long &s_time) {
     string file = FILE_NAME;
     string input;
 
@@ -79,29 +79,29 @@ void read_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time,
         fin.seekg(0); //go back to beginning of file
 
         //reading to list
-        auto start = high_resolution_clock::now();
+        start = high_resolution_clock::now();
         while (fin >> input)
             l.push_back(input);
-        auto end = high_resolution_clock::now();
-        auto duration = duration_cast<nanoseconds>(end - start);
+        end = high_resolution_clock::now();
+        duration = duration_cast<nanoseconds>(end - start);
         l_time = duration.count();
 
         fin.clear(); //clear flags
         fin.seekg(0); //go back to beginning of file
 
         //reading to set
-        auto start = high_resolution_clock::now();
+        start = high_resolution_clock::now();
         while (fin >> input)
             s.insert(input);
-        auto end = high_resolution_clock::now();
-        auto duration = duration_cast<nanoseconds>(end - start);
+        end = high_resolution_clock::now();
+        duration = duration_cast<nanoseconds>(end - start);
         s_time = duration.count();
 
         fin.close( );
     }
     else {
         cout << "ERROR! Please verify file name/directory and restart program.";
-        return 1;
+        return;
     }
 }
 
@@ -110,7 +110,7 @@ void read_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time,
 //arguments: vector & list structures (set not needed), and auto variables
 // to store their respective operation times in nanoseconds (all passed by reference)
 //returns: void
-void sort_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time) {
+void sort_race (vector<string> &v, long &v_time, list<string> &l, long &l_time) {
     //sort vector
     auto start = high_resolution_clock::now();
     sort(v.begin(), v.end());
@@ -119,10 +119,10 @@ void sort_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time) 
     v_time = duration.count();
 
     //sort list
-    auto start = high_resolution_clock::now();
+    start = high_resolution_clock::now();
     l.sort();
-    auto end = high_resolution_clock::now();
-    auto duration = duration_cast<nanoseconds>(end - start);
+    end = high_resolution_clock::now();
+    duration = duration_cast<nanoseconds>(end - start);
     l_time = duration.count();
 }
 
@@ -131,8 +131,8 @@ void sort_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time) 
 //arguments: vector, list, & set structures, and auto variables to store their
 // respective operation times in nanoseconds (all passed by reference)
 //returns: void
-void insert_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time,
-                  set<string> &s, auto &s_time) {
+void insert_race (vector<string> &v, long &v_time, list<string> &l, long &l_time,
+                  set<string> &s, long &s_time) {
     string val = "TESTCODE";
 
     //insert into vector
@@ -143,20 +143,20 @@ void insert_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time
     v_time = duration.count();
 
     //insert into list
-    auto start = high_resolution_clock::now();
+    start = high_resolution_clock::now();
     auto it = l.begin();
     for (int i = 0; i < l.size() / 2; ++i)
         it++;
     l.insert(it, val);
-    auto end = high_resolution_clock::now();
-    auto duration = duration_cast<nanoseconds>(end - start);
+    end = high_resolution_clock::now();
+    duration = duration_cast<nanoseconds>(end - start);
     l_time = duration.count();
 
     //insert into set
-    auto start = high_resolution_clock::now();
+    start = high_resolution_clock::now();
     s.insert(val);
-    auto end = high_resolution_clock::now();
-    auto duration = duration_cast<nanoseconds>(end - start);
+    end = high_resolution_clock::now();
+    duration = duration_cast<nanoseconds>(end - start);
     s_time = duration.count();
 }
 
@@ -175,22 +175,22 @@ void delete_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time
     v_time = duration.count();
     
     //delete from list
-    auto start = high_resolution_clock::now();
+    start = high_resolution_clock::now();
     auto it = l.begin();
     for (int i = 0; i < l.size() / 2; ++i)
         it++;
     l.erase(it);
-    auto end = high_resolution_clock::now();
-    auto duration = duration_cast<nanoseconds>(end - start);
+    end = high_resolution_clock::now();
+    duration = duration_cast<nanoseconds>(end - start);
     l_time = duration.count();
 
     //delete from set
-    auto start = high_resolution_clock::now();
-    auto it = s.begin();
+    start = high_resolution_clock::now();
+    auto it1 = s.begin();
     for (int i = 0; i < s.size() / 2; ++i)
-        it++;
-    s.erase(it);
-    auto end = high_resolution_clock::now();
-    auto duration = duration_cast<nanoseconds>(end - start);
+        it1++;
+    s.erase(it1);
+    end = high_resolution_clock::now();
+    duration = duration_cast<nanoseconds>(end - start);
     s_time = duration.count();
 }
