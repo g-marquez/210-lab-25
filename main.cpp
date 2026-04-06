@@ -131,10 +131,19 @@ void insert_race (vector<string> &v, auto &v_time, list<string> &l, auto &l_time
     v_time = duration.count();
 
     //insert into list
-
+    auto start = high_resolution_clock::now();
+    auto it = 
+    l.insert();
+    auto end = high_resolution_clock::now();
+    auto duration = duration_cast<nanoseconds>(end - start);
+    l_time = duration.count();
 
     //insert into set
-
+    auto start = high_resolution_clock::now();
+    s.insert(val);
+    auto end = high_resolution_clock::now();
+    auto duration = duration_cast<nanoseconds>(end - start);
+    s_time = duration.count();
 }
 
 //description: delete_race() determines which of the passed containers performs
