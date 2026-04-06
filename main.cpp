@@ -11,8 +11,9 @@
 #include <list>
 #include <set>
 #include <algorithm> //for sorting vector
-
+#include <fstream>
 using namespace std;
+using namespace std::chrono;
 
 int main() {
     //create empty containers
@@ -20,16 +21,21 @@ int main() {
     list<string> list;
     set<string> set;
 
+    auto start = high_resolution_clock::now();
     ifstream fin("codes.txt");
     if (fin.good( )) {
-        
-        }
+        string input;
+        while (fin >> input)
+            vector.push_back(input);       
         fin.close( );
     }
     else {
         cout << "ERROR! Please verify file name/directory and restart program.";
         return 1;
     }
+    auto end = high_resolution_clock::now();
+    auto duration = duration_cast<milliseconds>(end - start);
+    cout << "Time taken: " << duration.count() << " nanoseconds\n";
 
     return 0;
 }
